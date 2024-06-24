@@ -9,7 +9,16 @@ const Login = () => {
     const [password, setPassword] = useState(null)
 
     const checkCredentials = () =>{
-        console.log('test')
+        if(username === null || password === null || username.trim() === '' || password.trim() === '') {
+            return;
+        }
+
+        users.forEach((user, index) =>{
+            if(user.username === username && user.password === password){
+                console.log('pozdrav' + username)
+            }
+        })
+
     }
 
     return <>

@@ -1,16 +1,15 @@
-
-
 export const initialUserData = {
     username: null,
-    isLoggedIn: null,
+    isLoggedIn: false,
+    loginTime: null,
 }
 
-export const getUsersInitialData = () =>{
+export const getUsersInitialData = () => {
     const userData = localStorage.getItem("userData");
-    if(userData){
+    if (userData) {
         return JSON.parse(userData)
     }
-    return initialUserData
+    return userData ? JSON.parse(userData) : initialUserData
 }
 
 export const userReducer = (state, action) => {
@@ -19,6 +18,8 @@ export const userReducer = (state, action) => {
             return {...state, username: action.payload}
         case 'SET_IS_LOGGED_IN':
             return {...state, isLoggedIn: action.payload}
+        case 'SET_LOGIN_TIME':
+            return {...state, loginTime: action.payload}
         default:
             return state;
     }
